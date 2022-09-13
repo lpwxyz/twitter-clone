@@ -30,4 +30,7 @@ public class UserEntity {
 //    @Column(name = "tweets")
     @OneToMany(mappedBy = "user")
     private List<TweetEntity> tweets;
+
+    @OneToMany(mappedBy = "user")
+    private List<FeedEntity> feeds;
 }
