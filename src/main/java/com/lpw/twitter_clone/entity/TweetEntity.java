@@ -32,4 +32,7 @@ public class TweetEntity {
     @OneToMany(mappedBy = "tweet")
     private List<FavoriteEntity> favorites;
 
+    @ManyToMany(mappedBy = "tweets")
+    List<FeedEntity> feeds;
+
 }

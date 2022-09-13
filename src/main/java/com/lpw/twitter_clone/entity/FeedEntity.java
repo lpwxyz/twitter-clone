@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -21,4 +22,11 @@ public class FeedEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
+
+    @ManyToMany
+    @JoinTable(
+   name = "feeds_tweets",
+   joinColumns  = @JoinColumn(name = "feed_id"),
+   inverseJoinColumns = @JoinColumn(name = "tweet_id"))
+    List<TweetEntity> tweets;
 }
