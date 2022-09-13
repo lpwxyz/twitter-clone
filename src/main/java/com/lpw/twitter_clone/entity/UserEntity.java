@@ -27,10 +27,13 @@ public class UserEntity {
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-//    @Column(name = "tweets")
     @OneToMany(mappedBy = "user")
     private List<TweetEntity> tweets;
 
     @OneToMany(mappedBy = "user")
     private List<FeedEntity> feeds;
+
+    @OneToMany(mappedBy = "user")
+    private List<FavoriteEntity> favorites;
+
 }
