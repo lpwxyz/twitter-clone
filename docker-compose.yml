@@ -6,9 +6,7 @@ services:
     ports:
       - 8080:8080
     environment:
-      - MYSQL_DATABASE=twitter_clone
-    # networks:
-    #   - br0
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/twitter_clone
   db:
     image: 'mysql:8.0'
     restart: always
@@ -17,8 +15,10 @@ services:
       - MYSQL_DATABASE=twitter_clone
       - MYSQL_USER=lucas
       - MYSQL_PASSWORD=foo
-    ports:
-      - 3306:3306
+    # ports:
+    #   - 3306:3306
+    expose:
+      - 3306
     volumes:
       - db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -27,5 +27,5 @@ volumes:
     driver: local
 networks:
   default:
-    external:
-      name: br0
+    name: br0
+    external: true
