@@ -15,8 +15,6 @@ services:
       - MYSQL_DATABASE=twitter_clone
       - MYSQL_USER=lucas
       - MYSQL_PASSWORD=foo
-    # ports:
-    #   - 3306:3306
     expose:
       - 3306
     volumes:
