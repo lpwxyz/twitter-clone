@@ -1,0 +1,30 @@
+version: '3.18'
+services:
+  backend:
+    build: .
+    image: foo
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/twitter_clone
+      - SPRING_PROFILES_ACTIVE=prod
+  db:
+    image: 'mysql:8.0'
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=twitter_clone
+      - MYSQL_USER=lucas
+      - MYSQL_PASSWORD=foo
+    expose:
+      - 3306
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+volumes:
+  db:
+    driver: local
+networks:
+  default:
+    name: br0
+    external: true

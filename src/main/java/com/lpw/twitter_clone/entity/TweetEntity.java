@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -32,7 +33,6 @@ public class TweetEntity {
     @OneToMany(mappedBy = "tweet")
     private List<FavoriteEntity> favorites;
 
-    @ManyToMany(mappedBy = "tweets")
-    List<FeedEntity> feeds;
-
+    @OneToMany(mappedBy = "tweet")
+    Set<TweetFeedEntity> tweets_feeds;
 }
