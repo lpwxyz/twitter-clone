@@ -22,4 +22,8 @@ public class UserService {
 
         return users.stream().map(it -> User.builder().createdAt(it.getCreatedAt()).dob(it.getDob()).email(it.getEmail()).id(it.getId()).build()).collect(Collectors.toList());
     }
+
+    public User getUser(Long id) {
+        return  null;
+    }
 }
